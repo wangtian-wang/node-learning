@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+  {{ students}}
+  <form action="/students/edit" method="POST">
+    <div class="form-group">
+      <!--  input de 类型有一个 hidden 的属性,用来隐藏需要提交表单数据但是不能被用户看见的数据  但是原生的表单需要添加 name="数据名称" 的属性 -->
+      <label for="exampleInputEmail1">student name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="please type your name" name="id"
+        type="hidden" value="{{students.
+        id}}" />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">student name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="please type your name" name="name"
+        value="{{students.name}}" />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail2">student gender</label>
+      <input type="text" class="form-control" id="exampleInputEmail2" placeholder="please type your gender" name="sex"
+        value="{{students.sex}}" />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">hobbies</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="please type your Password"
+        value="{{students.hobbies}}" name="hobbies" />
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</body>
+
+</html>

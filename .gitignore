@@ -1,0 +1,8 @@
+
+# directory ignore all the node_module direcorty in each direcotry in new-one
+
+.DS_Store
+debug.log
+.vscode
+**/node_modules/*
+

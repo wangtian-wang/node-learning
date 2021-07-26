@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <a href="/students/new">
+    <button>
+      add new student
+    </button></a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>hah</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{each students}}
+      <tr>
+        <td>{{$value.name}}</td>
+        <td>{{$value.hobbies}}</td>
+        <td>{{$value.sex}}</td>
+        <td>
+          <a href="/students/edit/?id={{$value.id}}"> 编辑</a>
+          <a href="/students/delete/?id={{$value.id}}"> 删除</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</body>
+
+</html>

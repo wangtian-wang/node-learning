@@ -1,0 +1,34 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "success",
+      "sex": "female",
+      "hobbies": "coding"
+    },
+    {
+      "id": 2,
+      "name": "success",
+      "sex": "female",
+      "hobbies": "coding"
+    },
+    {
+      "id": 3,
+      "name": "success",
+      "sex": "female",
+      "hobbies": "coding"
+    },
+    {
+      "id": 4,
+      "name": "success",
+      "sex": "female",
+      "hobbies": "coding"
+    },
+    {
+      "id": 5,
+      "name": "success",
+      "sex": "female",
+      "hobbies": "coding"
+    }
+  ]
+}

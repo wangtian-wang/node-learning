@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>upload</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <input type="file" id="j_input" /> <br />
+    <img src="" alt="" id="j_img" /> <br />
+    <button onclick="handleUploadImg()">提交</button> <br />
+    <button onclick="handleDownLoadFiles()">下载文件</button>
+    <script>
+      const handleDownLoadFiles = () => {
+        const file = "hello the first time";
+        const blob = new Blob([file], { type: "text/plain;charset=utf-8" }); // application/json
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "test.txt"; // 下载的文件名
+        a.rel = "noopener";
+        /*
+         在使用targrt=_blank时  打开新的窗口时，赋予了新的窗口一些权限可以操作原tab页，其中window.location就是一个
+         为了防止window.opener被滥用，导致用户跳转到钓鱼页面
+           需要加上rel=noopener
+           兼容写法 :  rel="noopener norefferrer"
+        */
+        a.dispatchEvent(new MouseEvent("click")); // 添加一个点击事件
+        URL.revokeObjectURL(blob); // 释放 URL 对象昂,清理 blob
+      };
+
+      function handleUploadImg(params) {
+        let inputFile = $("#j_input").get(0).files[0];
+        let formData = new FormData();
+        formData.append("img", inputFile);
+        // img 为上传图片对象的 key 值,value 值为图片数据,这个 key 值必须和前端保持统一,否则会上传文件不成功
+        $.ajax({
+          url: "http://localhost:3000/upload",
+          type: "POST",
+          cache: false,
+          data: formData,
+          processData: false, // 不需要对 data 的数据做处理
+          contentType: false, //  已经声明了文件的类型为 multipart/form-data
+          success: (data) => {
+            if (data.err == 0) {
+              $("#j_img").attr("src", data.message);
+            }
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
